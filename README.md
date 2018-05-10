@@ -1,14 +1,22 @@
 # React Image [![npm version](https://img.shields.io/npm/v/react-image-preload.svg)](https://www.npmjs.org/package/react-image-preload)
 
+Preload images.
+
 [Demo](https://skyvow.github.io/react-image)
 
-## Example
+## 安装
+
+```
+$ npm install --save react-image-preload
+```
+
+## 示例
 
 ```js
 
 import React from 'react'
 import ReactDOM from 'react-dom'
-import ReactImage from 'react-image'
+import ReactImage from 'react-image-preload'
 
 const App = () => <ReactImage src='https://unsplash.it/900/900/?random' />
 
