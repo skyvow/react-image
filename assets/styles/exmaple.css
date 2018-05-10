@@ -193,6 +193,12 @@ body {
     text-align: left
 }
 
+.btn-refresh {
+    position: absolute;
+    right: 25px;
+    top: 20px;
+}
+
 .image {
     position: relative;
 }
