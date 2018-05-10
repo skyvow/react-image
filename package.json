@@ -1,5 +1,5 @@
 {
-  "name": "react-image",
+  "name": "react-image-preload",
   "version": "1.0.0",
   "description": "Preload images",
   "main": "./dist/index.js",
@@ -81,6 +81,19 @@
     "test:coverage": "nyc --require babel-core/register mocha && nyc report --reporter=lcov",
     "ghpages": "gh-pages -d ./build/demo"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/skyvow/react-image.git"
+  },
+  "keywords": [
+    "react",
+    "react-component",
+    "preload-images"
+  ],
   "author": "skyvow",
-  "license": "MIT"
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/skyvow/react-image/issues"
+  },
+  "homepage": "https://github.com/skyvow/react-image#readme"
 }

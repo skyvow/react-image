@@ -1,4 +1,4 @@
-# React Image
+# React Image [![npm version](https://img.shields.io/npm/v/react-image-preload.svg)](https://www.npmjs.org/package/react-image-preload)
 
 [Demo](https://skyvow.github.io/react-image)
 
@@ -19,8 +19,8 @@ ReactDOM.render(<App/>, document.getElementById('app'))
 ## 使用方法
 
 ```sh
-$ git clone https://github.com/skyvow/skyvow.github.io.git
-$ cd skyvow.github.io
+$ git clone https://github.com/skyvow/react-image.git
+$ cd react-image
 $ npm install
 $ npm start
 ```
@@ -31,6 +31,12 @@ $ npm start
 |`start`|服务启动在 3000 端口，代码热替换开启。|
 |`build`|编译程序到 build 目录下（默认目录 ~/build）。|
 |`lint`|检查所有 .js 文件是否规范。[更多](http://eslint.org/docs/user-guide/command-line-interface.html#fix)|
+|`dist`|输出编译后的 dist 文件。|
+|`test`|运行测试用例。|
+|`test:watch`|监听文件变化，自动运行测试用例。|
+|`test:reporter`|输出测试结果报告。|
+|`test:coverage`|输出测试覆盖率报告。|
+|`ghpages`|部署 GitHub Pages 站点。|
 
 ## 贡献
 

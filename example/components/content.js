@@ -65,87 +65,121 @@ class Content extends React.Component {
                     value: '-',
                 },
             ],
+            data: [
+                {
+                    title: '资源加载中',
+                    images: [
+                        {
+                            src: 'https://unsplash.it/900/900/?random&st=1',
+                        },
+                        {
+                            src: 'https://unsplash.it/900/900/?random&st=2',
+                            loadingCls: 'loadingCls',
+                            loadedCls: 'loadedCls',
+                        },
+                        {
+                            src: 'https://unsplash.it/900/900/?random&st=3',
+                            loading,
+                        },
+                        {
+                            src: 'https://unsplash.it/900/900/?random&st=4',
+                            loading: <Loading />,
+                        },
+                    ]
+                },
+                {
+                    title: '资源加载失败',
+                    images: [
+                        {
+                            src: 'error',
+                        },
+                        {
+                            src: 'error',
+                            errorCls: 'errorCls',
+                        },
+                        {
+                            src: 'error',
+                            error,
+                        },
+                        {
+                            src: 'error',
+                            error: <div style={{ textAlign: 'center', marginTop: 80 }}>资源加载失败</div>,
+                        },
+                    ]
+                },
+                {
+                    title: '资源不存在',
+                    images: [
+                        {
+                            src: '',
+                        },
+                        {
+                            src: '',
+                            emptyCls: 'emptyCls',
+                        },
+                        {
+                            src: '',
+                            empty,
+                        },
+                        {
+                            src: '',
+                            empty: <div style={{ textAlign: 'center', marginTop: 80 }}>资源不存在</div>,
+                        },
+                    ]
+                }
+            ]
         }
     }
 
+    refresh = (data = []) => {
+        return data.map((n, i) => {
+            if (Array.isArray(n.images)) {
+                return Object.assign({}, n, {
+                    images: n.images.map((m, j) => {
+                        return Object.assign({}, m, {
+                            src: m.src && m.src !== 'error' ? `https://unsplash.it/900/900/?random=${i}&key=${j}&st=${Date.now()}` : m.src,
+                        })
+                    })
+                })
+            }
+            return n
+        })
+    }
+
+    onClick = () => {
+        this.setState({
+            data: this.refresh(this.state.data),
+        })
+    }
+
     render () {
-        const { items } = this.state
+        const { items, data } = this.state
 
         return (
             <section className='col-md-8 col-md-offset-2 card-wrapper'>
                 <div className='card background-card'>
+                    <button type='button' className='btn btn-default btn-refresh' onClick={this.onClick}>Refresh</button>
                     <h4 className='text-uppercase'>代码演示</h4>
                     <hr />
                     <section className='mb-50'>
-                        <h5 className='box-title text-uppercase'>资源加载中</h5>
-                        <div className='row'>
-                            <div className='col-md-3'>
-                                <div className='image'>
-                                    <ReactImage src='https://unsplash.it/900/900/?random&st=1' />
+                        {data.map((n, i) => {
+                            return (
+                                <div key={i}>
+                                    <h5 className='box-title text-uppercase'>{n.title}</h5>
+                                    <div className='row'>
+                                        {n.images.map((m, j) => {
+                                            return (
+                                                <div className='col-md-3' key={j}>
+                                                    <div className='image'>
+                                                        <ReactImage {...m} />
+                                                    </div>
+                                                </div>
+                                            )
+                                        })}
+                                    </div>
                                 </div>
-                            </div>
-                            <div className='col-md-3'>
-                                <div className='image'>
-                                    <ReactImage src='https://unsplash.it/900/900/?random&st=2' loadingCls='loadingCls' loadedCls='loadedCls' />
-                                </div>
-                            </div>
-                            <div className='col-md-3'>
-                                <div className='image'>
-                                    <ReactImage src='https://unsplash.it/900/900/?random&st=3' loading={loading} />
-                                </div>
-                            </div>
-                            <div className='col-md-3'>
-                                <div className='image'>
-                                    <ReactImage src='https://unsplash.it/900/900/?random&st=4' loading={<Loading />} />
-                                </div>
-                            </div>
-                        </div>
-                        <h5 className='box-title text-uppercase'>资源加载失败</h5>
-                        <div className='row'>
-                            <div className='col-md-3'>
-                                <div className='image'>
-                                    <ReactImage src='error' />
-                                </div>
-                            </div>
-                            <div className='col-md-3'>
-                                <div className='image'>
-                                    <ReactImage src='error' errorCls='errorCls' />
-                                </div>
-                            </div>
-                            <div className='col-md-3'>
-                                <div className='image'>
-                                    <ReactImage src='error' error={error} />
-                                </div>
-                            </div>
-                            <div className='col-md-3'>
-                                <div className='image'>
-                                    <ReactImage src='error' error={<div style={{ textAlign: 'center', marginTop: 80 }}>资源加载失败</div>} />
-                                </div>
-                            </div>
-                        </div>
-                        <h5 className='box-title text-uppercase'>资源不存在</h5>
-                        <div className='row'>
-                            <div className='col-md-3'>
-                                <div className='image'>
-                                    <ReactImage src='' />
-                                </div>
-                            </div>
-                            <div className='col-md-3'>
-                                <div className='image'>
-                                    <ReactImage src='' emptyCls='emptyCls' />
-                                </div>
-                            </div>
-                            <div className='col-md-3'>
-                                <div className='image'>
-                                    <ReactImage src='' empty={empty} />
-                                </div>
-                            </div>
-                            <div className='col-md-3'>
-                                <div className='image'>
-                                    <ReactImage src='' empty={<div style={{ textAlign: 'center', marginTop: 80 }}>资源不存在</div>} />
-                                </div>
-                            </div>
-                        </div>
+                            )
+                        })}
                     </section>
                     <h4 className='text-uppercase'>API</h4>
                     <hr />
