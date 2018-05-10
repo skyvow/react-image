@@ -1,4 +1,4 @@
-# React Image [![npm version](https://img.shields.io/npm/v/react-image-preload.svg)](https://www.npmjs.org/package/react-image-preload)
+# React Image [![Build Status](https://travis-ci.org/skyvow/react-image.svg?branch=master)](https://travis-ci.org/skyvow/react-image) [![npm version](https://img.shields.io/npm/v/react-image-preload.svg)](https://www.npmjs.org/package/react-image-preload) [![Coverage Status](https://coveralls.io/repos/github/skyvow/react-image/badge.svg?branch=master)](https://coveralls.io/github/skyvow/react-image?branch=master)
 
 Preload images.
 
